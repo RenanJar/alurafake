@@ -1,5 +1,7 @@
 package br.com.alura.AluraFake.user;
 
+import br.com.alura.AluraFake.domain.User;
+
 import java.io.Serializable;
 
 public class UserListItemDTO implements Serializable {

@@ -1,8 +1,8 @@
 package br.com.alura.AluraFake.domain.task.validator;
 
-import br.com.alura.AluraFake.domain.course.dto.TaskDTO;
+import br.com.alura.AluraFake.api.dto.task.TaskDTO;
 import br.com.alura.AluraFake.domain.task.rules.TaskRule;
-import br.com.alura.AluraFake.domain.error.TaskValidationException;
+import br.com.alura.AluraFake.domain.error.exception.TaskValidationException;
 import br.com.alura.AluraFake.domain.error.dto.ValidationError;
 import br.com.alura.AluraFake.domain.task.rules.TaskTypeAllowed;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package br.com.alura.AluraFake.domain.error;
+package br.com.alura.AluraFake.domain.error.exception;
 
 import br.com.alura.AluraFake.domain.error.dto.ValidationError;
 

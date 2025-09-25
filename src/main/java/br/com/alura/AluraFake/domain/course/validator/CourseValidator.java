@@ -1,7 +1,7 @@
 package br.com.alura.AluraFake.domain.course.validator;
 
 import br.com.alura.AluraFake.domain.course.rules.CourseRule;
-import br.com.alura.AluraFake.domain.error.TaskValidationException;
+import br.com.alura.AluraFake.domain.error.exception.TaskValidationException;
 import br.com.alura.AluraFake.domain.error.dto.ValidationError;
 import org.springframework.stereotype.Component;
 

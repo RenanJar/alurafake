@@ -1,7 +1,7 @@
 package br.com.alura.AluraFake.domain.task.rules.singlechoice;
 
-import br.com.alura.AluraFake.domain.course.dto.TaskDTO;
-import br.com.alura.AluraFake.domain.course.dto.TaskAnswerDTO;
+import br.com.alura.AluraFake.api.dto.task.TaskDTO;
+import br.com.alura.AluraFake.api.dto.task.TaskAnswerDTO;
 import br.com.alura.AluraFake.domain.task.rules.TaskRule;
 import br.com.alura.AluraFake.domain.error.dto.ValidationError;
 import br.com.alura.AluraFake.domain.enumeration.Type;

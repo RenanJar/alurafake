@@ -1,6 +1,6 @@
 package br.com.alura.AluraFake.domain.course.rules;
 
-import br.com.alura.AluraFake.domain.error.EntityNotFoundException;
+import br.com.alura.AluraFake.domain.error.exception.EntityNotFoundException;
 import br.com.alura.AluraFake.domain.error.dto.ValidationError;
 import br.com.alura.AluraFake.service.CourseService;
 import org.springframework.context.annotation.Lazy;

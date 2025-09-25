@@ -1,6 +1,6 @@
 package br.com.alura.AluraFake.domain.user.entity;
 
-import br.com.alura.AluraFake.domain.user.Role;
+import br.com.alura.AluraFake.domain.enumeration.Role;
 import br.com.alura.AluraFake.util.PasswordGeneration;
 import jakarta.persistence.*;
 

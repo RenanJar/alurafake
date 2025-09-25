@@ -2,6 +2,9 @@ package br.com.alura.AluraFake.domain.error;
 
 import br.com.alura.AluraFake.domain.error.dto.ErrorItemDTO;
 import br.com.alura.AluraFake.domain.error.dto.ValidationError;
+import br.com.alura.AluraFake.domain.error.exception.EntityNotFoundException;
+import br.com.alura.AluraFake.domain.error.exception.InvalidUserRoleException;
+import br.com.alura.AluraFake.domain.error.exception.TaskValidationException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
@@ -39,6 +42,18 @@ public class GlobalExceptionHandler {
         problem.setTitle("Resource not found");
         problem.setDetail(ex.getMessage());
         problem.setType(URI.create(errorBaseUri + ProblemType.RESOURCE_NOT_FOUND.getPath()));
+        problem.setProperty("path", request.getRequestURI());
+        return problem;
+    }
+
+    @ExceptionHandler(InvalidUserRoleException.class)
+    public ProblemDetail handleEntityNotFound(InvalidUserRoleException ex, HttpServletRequest request) {
+        String errorBaseUri = request.getRequestURI();
+
+        ProblemDetail problem = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
+        problem.setTitle("Resource not found");
+        problem.setDetail(ex.getMessage());
+        problem.setType(URI.create(errorBaseUri + ProblemType.INVALID_INSTRUCTOR_ROLE.getPath()));
         problem.setProperty("path", request.getRequestURI());
         return problem;
     }

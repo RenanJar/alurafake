@@ -1,5 +1,7 @@
-package br.com.alura.AluraFake.domain.user;
+package br.com.alura.AluraFake.api.controller;
 
+import br.com.alura.AluraFake.api.dto.user.NewUserDTO;
+import br.com.alura.AluraFake.api.dto.user.UserListItemDTO;
 import br.com.alura.AluraFake.domain.user.entity.User;
 import br.com.alura.AluraFake.infra.repository.UserRepository;
 import br.com.alura.AluraFake.domain.error.dto.ErrorItemDTO;

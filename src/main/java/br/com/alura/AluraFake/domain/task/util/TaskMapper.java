@@ -1,6 +1,6 @@
 package br.com.alura.AluraFake.domain.task.util;
 
-import br.com.alura.AluraFake.domain.course.dto.TaskDTO;
+import br.com.alura.AluraFake.api.dto.task.TaskDTO;
 import br.com.alura.AluraFake.domain.course.entity.Course;
 import br.com.alura.AluraFake.domain.task.entity.Task;
 import br.com.alura.AluraFake.infra.repository.CourseRepository;

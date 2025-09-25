@@ -1,4 +1,4 @@
-package br.com.alura.AluraFake.domain.course.dto;
+package br.com.alura.AluraFake.api.dto.task;
 
 public class TaskAnswerDTO {
 

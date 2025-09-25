@@ -1,10 +1,10 @@
 package br.com.alura.AluraFake.course;
 
 import br.com.alura.AluraFake.api.controller.CourseController;
-import br.com.alura.AluraFake.domain.course.dto.NewCourseDTO;
+import br.com.alura.AluraFake.api.dto.course.NewCourseDTO;
 import br.com.alura.AluraFake.domain.course.entity.Course;
 import br.com.alura.AluraFake.domain.user.entity.User;
-import br.com.alura.AluraFake.domain.user.Role;
+import br.com.alura.AluraFake.domain.enumeration.Role;
 import br.com.alura.AluraFake.infra.repository.CourseRepository;
 import br.com.alura.AluraFake.infra.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;

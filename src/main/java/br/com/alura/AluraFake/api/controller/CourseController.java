@@ -1,7 +1,7 @@
 package br.com.alura.AluraFake.api.controller;
 
-import br.com.alura.AluraFake.domain.course.dto.CourseListItemDTO;
-import br.com.alura.AluraFake.domain.course.dto.NewCourseDTO;
+import br.com.alura.AluraFake.api.dto.course.CourseListItemDTO;
+import br.com.alura.AluraFake.api.dto.course.NewCourseDTO;
 import br.com.alura.AluraFake.domain.course.entity.Course;
 import br.com.alura.AluraFake.domain.user.entity.User;
 import br.com.alura.AluraFake.infra.repository.CourseRepository;

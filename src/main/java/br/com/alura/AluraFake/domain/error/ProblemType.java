@@ -8,6 +8,12 @@ public enum ProblemType {
             "/resource-not-found",
             "Resource not found",
             "The requested resource was not found."
+    ),
+
+    INVALID_INSTRUCTOR_ROLE(
+    "/invalid-instructor-role",
+            "Invalid instructor role",
+            "You do not have permission to perform this action with your current role."
     );
 
     private final String path;

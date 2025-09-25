@@ -1,4 +1,4 @@
-package br.com.alura.AluraFake.domain.error;
+package br.com.alura.AluraFake.domain.error.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

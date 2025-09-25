@@ -1,27 +1,28 @@
-package br.com.alura.AluraFake.domain.rules.general;
+package br.com.alura.AluraFake.domain.task.rules.general;
 
-import br.com.alura.AluraFake.course.dto.TaskDTO;
-import br.com.alura.AluraFake.domain.rules.Rule;
+import br.com.alura.AluraFake.domain.course.dto.TaskDTO;
+import br.com.alura.AluraFake.domain.task.rules.TaskRule;
 import br.com.alura.AluraFake.domain.task.error.ValidationError;
-import br.com.alura.AluraFake.repository.TaskRepository;
+import br.com.alura.AluraFake.service.TaskService;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class UniqueStatementRule implements Rule {
+public class UniqueStatementTaskRule implements TaskRule {
 
-    private final TaskRepository taskRepository;
+    private final TaskService taskService;
 
-    UniqueStatementRule(TaskRepository repository) {
-        this.taskRepository = repository;
+    UniqueStatementTaskRule(@Lazy TaskService repository) {
+        this.taskService = repository;
     }
 
     @Override
     public List<ValidationError> validate(TaskDTO taskRequest) {
         String normalizedStatement = taskRequest.getStatement().replaceAll("\\s+", "").toLowerCase();
 
-        boolean exists = taskRepository.findByCourseId(taskRequest.getCourseId()).stream()
+        boolean exists = taskService.findByCourseId(taskRequest.getCourseId()).stream()
                 .map(task -> task.getStatement().replaceAll("\\s+", "").toLowerCase())
                 .anyMatch(normalizedStatementDb -> normalizedStatementDb.equals(normalizedStatement));
 

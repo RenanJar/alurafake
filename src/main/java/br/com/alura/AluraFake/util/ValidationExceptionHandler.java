@@ -1,5 +1,7 @@
 package br.com.alura.AluraFake.util;
 
+import br.com.alura.AluraFake.domain.task.error.TaskValidationException;
+import br.com.alura.AluraFake.domain.task.error.ValidationError;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -16,6 +18,13 @@ public class ValidationExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<List<ErrorItemDTO>> handleValidationExceptions(MethodArgumentNotValidException ex) {
         List<ErrorItemDTO> errors = ex.getBindingResult().getFieldErrors().stream().map(ErrorItemDTO::new).toList();
+        return ResponseEntity.badRequest().body(errors);
+    }
+
+    @ExceptionHandler(TaskValidationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<List<ValidationError>> handleValidationExceptions(TaskValidationException ex) {
+        List<ValidationError> errors = ex.getErrors();
         return ResponseEntity.badRequest().body(errors);
     }
 }

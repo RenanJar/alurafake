@@ -1,6 +1,6 @@
-package br.com.alura.AluraFake.util;
+package br.com.alura.AluraFake.domain.task.rules;
 
-import br.com.alura.AluraFake.task.Type;
+import br.com.alura.AluraFake.domain.enumeration.Type;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

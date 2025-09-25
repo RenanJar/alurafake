@@ -1,7 +1,7 @@
 package br.com.alura.AluraFake.domain.course.rules;
 
-import br.com.alura.AluraFake.domain.course.Status;
-import br.com.alura.AluraFake.domain.task.error.ValidationError;
+import br.com.alura.AluraFake.domain.enumeration.Status;
+import br.com.alura.AluraFake.domain.error.dto.ValidationError;
 import br.com.alura.AluraFake.service.CourseService;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;

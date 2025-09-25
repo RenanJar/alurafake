@@ -1,8 +1,7 @@
 package br.com.alura.AluraFake.domain.course.rules;
 
-import br.com.alura.AluraFake.domain.task.error.ValidationError;
+import br.com.alura.AluraFake.domain.error.dto.ValidationError;
 import br.com.alura.AluraFake.service.TaskService;
-import br.com.alura.AluraFake.task.Type;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package br.com.alura.AluraFake.domain.course.entity;
 
 import br.com.alura.AluraFake.domain.user.entity.User;
-import br.com.alura.AluraFake.domain.course.Status;
+import br.com.alura.AluraFake.domain.enumeration.Status;
 import jakarta.persistence.*;
 import org.springframework.util.Assert;
 

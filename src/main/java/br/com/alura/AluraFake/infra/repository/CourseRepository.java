@@ -1,6 +1,6 @@
-package br.com.alura.AluraFake.repository;
+package br.com.alura.AluraFake.infra.repository;
 
-import br.com.alura.AluraFake.domain.course.Status;
+import br.com.alura.AluraFake.domain.enumeration.Status;
 import br.com.alura.AluraFake.domain.course.entity.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

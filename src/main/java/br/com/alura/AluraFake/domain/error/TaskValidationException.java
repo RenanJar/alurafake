@@ -1,4 +1,6 @@
-package br.com.alura.AluraFake.domain.task.error;
+package br.com.alura.AluraFake.domain.error;
+
+import br.com.alura.AluraFake.domain.error.dto.ValidationError;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package br.com.alura.AluraFake.domain.task.error;
+package br.com.alura.AluraFake.domain.error.dto;
 
 public class ValidationError {
 

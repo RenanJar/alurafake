@@ -1,6 +1,6 @@
 package br.com.alura.AluraFake.domain.course.rules;
 
-import br.com.alura.AluraFake.domain.task.error.ValidationError;
+import br.com.alura.AluraFake.domain.error.dto.ValidationError;
 import br.com.alura.AluraFake.service.TaskService;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +17,7 @@ public class TaskOrderContinuousRule implements CourseRule {
 
     @Override
     public List<ValidationError> validate(Long courseId) {
-        boolean continuous = taskService.isTaskOrderContinuous(courseId);
+        Boolean continuous = taskService.isTaskOrderContinuous(courseId);
 
         if (!continuous) {
             return List.of(new ValidationError(

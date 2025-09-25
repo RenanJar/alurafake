@@ -1,7 +1,6 @@
 package br.com.alura.AluraFake.domain.course.rules;
 
-import br.com.alura.AluraFake.domain.course.entity.Course;
-import br.com.alura.AluraFake.domain.task.error.ValidationError;
+import br.com.alura.AluraFake.domain.error.dto.ValidationError;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package br.com.alura.AluraFake.domain.task.entity;
 
 import br.com.alura.AluraFake.domain.course.entity.Course;
-import br.com.alura.AluraFake.task.Type;
+import br.com.alura.AluraFake.domain.enumeration.Type;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 

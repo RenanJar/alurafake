@@ -1,6 +1,6 @@
 package br.com.alura.AluraFake.domain.course.dto;
 
-import br.com.alura.AluraFake.task.Type;
+import br.com.alura.AluraFake.domain.enumeration.Type;
 import jakarta.validation.constraints.NotBlank;
 
 import jakarta.validation.constraints.NotNull;

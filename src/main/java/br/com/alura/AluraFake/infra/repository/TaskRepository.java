@@ -1,4 +1,4 @@
-package br.com.alura.AluraFake.repository;
+package br.com.alura.AluraFake.infra.repository;
 
 import br.com.alura.AluraFake.domain.task.entity.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -34,7 +34,7 @@ public interface TaskRepository extends JpaRepository<Task, Integer>{
             FROM Task t
             WHERE t.course.id = :courseId
             """)
-    boolean isTaskOrderContinuous(@Param("courseId") Long courseId);
+    Boolean isTaskOrderContinuous(@Param("courseId") Long courseId);
 
     List<Task>findByCourseIdOrderByOrderAsc(Integer courseId);
 }

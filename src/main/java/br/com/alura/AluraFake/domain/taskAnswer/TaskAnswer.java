@@ -1,6 +1,7 @@
 package br.com.alura.AluraFake.domain.taskAnswer;
 
-import br.com.alura.AluraFake.domain.task.Task;
+
+import br.com.alura.AluraFake.domain.task.entity.Task;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

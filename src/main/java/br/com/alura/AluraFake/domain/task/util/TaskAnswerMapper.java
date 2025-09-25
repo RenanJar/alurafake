@@ -1,9 +1,9 @@
-package br.com.alura.AluraFake.util;
+package br.com.alura.AluraFake.domain.task.util;
 
 import br.com.alura.AluraFake.domain.course.dto.TaskAnswerDTO;
 import br.com.alura.AluraFake.domain.task.entity.Task;
-import br.com.alura.AluraFake.domain.taskAnswer.TaskAnswer;
-import br.com.alura.AluraFake.repository.TaskRepository;
+import br.com.alura.AluraFake.domain.task.entity.TaskAnswer;
+import br.com.alura.AluraFake.infra.repository.TaskRepository;
 import org.springframework.stereotype.Component;
 
 @Component

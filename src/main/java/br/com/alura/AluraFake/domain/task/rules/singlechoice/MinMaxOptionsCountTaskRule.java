@@ -2,9 +2,9 @@ package br.com.alura.AluraFake.domain.task.rules.singlechoice;
 
 import br.com.alura.AluraFake.domain.course.dto.TaskDTO;
 import br.com.alura.AluraFake.domain.task.rules.TaskRule;
-import br.com.alura.AluraFake.domain.task.error.ValidationError;
-import br.com.alura.AluraFake.task.Type;
-import br.com.alura.AluraFake.util.TaskTypeAllowed;
+import br.com.alura.AluraFake.domain.error.dto.ValidationError;
+import br.com.alura.AluraFake.domain.enumeration.Type;
+import br.com.alura.AluraFake.domain.task.rules.TaskTypeAllowed;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

@@ -1,8 +1,8 @@
 package br.com.alura.AluraFake.service;
 
 import br.com.alura.AluraFake.domain.course.dto.TaskAnswerDTO;
-import br.com.alura.AluraFake.repository.TaskAnswerRepository;
-import br.com.alura.AluraFake.util.TaskAnswerMapper;
+import br.com.alura.AluraFake.infra.repository.TaskAnswerRepository;
+import br.com.alura.AluraFake.domain.task.util.TaskAnswerMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;

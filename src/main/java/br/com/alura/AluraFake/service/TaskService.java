@@ -3,13 +3,14 @@ package br.com.alura.AluraFake.service;
 import br.com.alura.AluraFake.domain.course.dto.TaskDTO;
 import br.com.alura.AluraFake.domain.task.entity.Task;
 import br.com.alura.AluraFake.domain.task.validator.TaskValidator;
-import br.com.alura.AluraFake.repository.TaskRepository;
-import br.com.alura.AluraFake.task.Type;
-import br.com.alura.AluraFake.util.TaskMapper;
+import br.com.alura.AluraFake.infra.repository.TaskRepository;
+import br.com.alura.AluraFake.domain.enumeration.Type;
+import br.com.alura.AluraFake.domain.task.util.TaskMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -59,6 +60,6 @@ public class TaskService {
     }
 
     public Boolean isTaskOrderContinuous(Long courseId) {
-        return taskRepository.isTaskOrderContinuous(courseId);
+        return Optional.ofNullable(taskRepository.isTaskOrderContinuous(courseId)).orElse(false);
     }
 }

@@ -1,4 +1,4 @@
-package br.com.alura.AluraFake.task;
+package br.com.alura.AluraFake.api.controller;
 
 import br.com.alura.AluraFake.domain.course.dto.TaskDTO;
 import br.com.alura.AluraFake.service.TaskService;

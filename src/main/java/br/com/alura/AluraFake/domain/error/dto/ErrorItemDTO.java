@@ -1,4 +1,4 @@
-package br.com.alura.AluraFake.util;
+package br.com.alura.AluraFake.domain.error.dto;
 
 import org.springframework.util.Assert;
 import org.springframework.validation.FieldError;

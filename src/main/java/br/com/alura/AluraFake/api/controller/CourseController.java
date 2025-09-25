@@ -1,13 +1,13 @@
-package br.com.alura.AluraFake.domain.course;
+package br.com.alura.AluraFake.api.controller;
 
 import br.com.alura.AluraFake.domain.course.dto.CourseListItemDTO;
 import br.com.alura.AluraFake.domain.course.dto.NewCourseDTO;
 import br.com.alura.AluraFake.domain.course.entity.Course;
 import br.com.alura.AluraFake.domain.user.entity.User;
-import br.com.alura.AluraFake.repository.CourseRepository;
-import br.com.alura.AluraFake.repository.UserRepository;
+import br.com.alura.AluraFake.infra.repository.CourseRepository;
+import br.com.alura.AluraFake.infra.repository.UserRepository;
 import br.com.alura.AluraFake.service.CourseService;
-import br.com.alura.AluraFake.util.ErrorItemDTO;
+import br.com.alura.AluraFake.domain.error.dto.ErrorItemDTO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;

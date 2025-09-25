@@ -1,4 +1,4 @@
-package br.com.alura.AluraFake;
+package br.com.alura.AluraFake.api.controller;
 
 import org.springframework.web.bind.annotation.*;
 

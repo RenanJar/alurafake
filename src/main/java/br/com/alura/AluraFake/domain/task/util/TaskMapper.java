@@ -1,9 +1,9 @@
-package br.com.alura.AluraFake.util;
+package br.com.alura.AluraFake.domain.task.util;
 
 import br.com.alura.AluraFake.domain.course.dto.TaskDTO;
 import br.com.alura.AluraFake.domain.course.entity.Course;
 import br.com.alura.AluraFake.domain.task.entity.Task;
-import br.com.alura.AluraFake.repository.CourseRepository;
+import br.com.alura.AluraFake.infra.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

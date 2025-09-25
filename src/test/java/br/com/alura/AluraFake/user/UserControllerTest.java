@@ -4,7 +4,7 @@ import br.com.alura.AluraFake.domain.user.entity.User;
 import br.com.alura.AluraFake.domain.user.NewUserDTO;
 import br.com.alura.AluraFake.domain.user.Role;
 import br.com.alura.AluraFake.domain.user.UserController;
-import br.com.alura.AluraFake.repository.UserRepository;
+import br.com.alura.AluraFake.infra.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

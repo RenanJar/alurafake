@@ -1,12 +1,12 @@
-package br.com.alura.AluraFake.course;
+package br.com.alura.AluraFake.api.controller;
 
-import br.com.alura.AluraFake.api.controller.CourseController;
 import br.com.alura.AluraFake.api.dto.course.NewCourseDTO;
 import br.com.alura.AluraFake.domain.course.entity.Course;
 import br.com.alura.AluraFake.domain.user.entity.User;
 import br.com.alura.AluraFake.domain.enumeration.Role;
 import br.com.alura.AluraFake.infra.repository.CourseRepository;
 import br.com.alura.AluraFake.infra.repository.UserRepository;
+import br.com.alura.AluraFake.service.CourseService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +30,8 @@ class CourseControllerTest {
     private UserRepository userRepository;
     @MockBean
     private CourseRepository courseRepository;
+    @MockBean
+    private CourseService courseService;
     @Autowired
     private ObjectMapper objectMapper;
 

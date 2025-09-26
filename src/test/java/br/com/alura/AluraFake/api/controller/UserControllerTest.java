@@ -41,8 +41,10 @@ class UserControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(newUserDTO)))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$[0].field").value("email"))
-                .andExpect(jsonPath("$[0].message").isNotEmpty());
+                .andExpect(jsonPath("$.title").value("Validation error"))
+                .andExpect(jsonPath("$.errors").isArray())
+                .andExpect(jsonPath("$.errors[0].field").value("email"))
+                .andExpect(jsonPath("$.errors[0].message").isNotEmpty());
     }
 
     @Test
@@ -56,8 +58,10 @@ class UserControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(newUserDTO)))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$[0].field").value("email"))
-                .andExpect(jsonPath("$[0].message").isNotEmpty());
+                .andExpect(jsonPath("$.title").value("Validation error"))
+                .andExpect(jsonPath("$.errors").isArray())
+                .andExpect(jsonPath("$.errors[0].field").value("email"))
+                .andExpect(jsonPath("$.errors[0].message").isNotEmpty());
     }
 
     @Test

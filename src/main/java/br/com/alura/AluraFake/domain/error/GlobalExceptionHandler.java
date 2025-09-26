@@ -16,22 +16,24 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseEntity<List<ErrorItemDTO>> handleValidationExceptions(MethodArgumentNotValidException ex) {
+    public ProblemDetail handleValidationExceptions(MethodArgumentNotValidException ex, HttpServletRequest request) {
         List<ErrorItemDTO> errors = ex.getBindingResult().getFieldErrors().stream().map(ErrorItemDTO::new).toList();
-        return ResponseEntity.badRequest().body(errors);
-    }
 
-    @ExceptionHandler(TaskValidationException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseEntity<List<ValidationError>> handleValidationExceptions(TaskValidationException ex) {
-        List<ValidationError> errors = ex.getErrors();
-        return ResponseEntity.badRequest().body(errors);
+        String errorBaseUri = request.getRequestURI();
+
+        ProblemDetail problem = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
+        problem.setTitle(ProblemType.VALIDATION_ERROR.getTitle());
+        problem.setDetail(ex.getMessage());
+        problem.setType(URI.create(errorBaseUri + ProblemType.VALIDATION_ERROR.getPath()));
+        problem.setProperty("path", request.getRequestURI());
+        problem.setProperties(Map.of("errors",errors));
+        return problem;
     }
 
     @ExceptionHandler(EntityNotFoundException.class)
@@ -39,7 +41,7 @@ public class GlobalExceptionHandler {
         String errorBaseUri = request.getRequestURI();
 
         ProblemDetail problem = ProblemDetail.forStatus(HttpStatus.NOT_FOUND);
-        problem.setTitle("Resource not found");
+        problem.setTitle(ProblemType.RESOURCE_NOT_FOUND.getTitle());
         problem.setDetail(ex.getMessage());
         problem.setType(URI.create(errorBaseUri + ProblemType.RESOURCE_NOT_FOUND.getPath()));
         problem.setProperty("path", request.getRequestURI());
@@ -51,10 +53,23 @@ public class GlobalExceptionHandler {
         String errorBaseUri = request.getRequestURI();
 
         ProblemDetail problem = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
-        problem.setTitle("Resource not found");
+        problem.setTitle(ProblemType.INVALID_INSTRUCTOR_ROLE.getTitle());
         problem.setDetail(ex.getMessage());
         problem.setType(URI.create(errorBaseUri + ProblemType.INVALID_INSTRUCTOR_ROLE.getPath()));
         problem.setProperty("path", request.getRequestURI());
+        return problem;
+    }
+
+    @ExceptionHandler(TaskValidationException.class)
+    public ProblemDetail handleEntityNotFound(TaskValidationException ex, HttpServletRequest request) {
+        String errorBaseUri = request.getRequestURI();
+
+        ProblemDetail problem = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
+        problem.setTitle(ProblemType.VALIDATION_ERROR.getTitle());
+        problem.setDetail(ex.getMessage());
+        problem.setType(URI.create(errorBaseUri + ProblemType.VALIDATION_ERROR.getPath()));
+        problem.setProperty("path", request.getRequestURI());
+        problem.setProperties(Map.of("errors",ex.getErrors()));
         return problem;
     }
 }

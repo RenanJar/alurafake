@@ -4,12 +4,16 @@ package br.com.alura.AluraFake.domain.error;
 
 public enum ProblemType {
 
+    VALIDATION_ERROR(
+            "/validation-error",
+            "Validation error",
+            "One or more fields are invalid. Please correct them and try again."
+    ),
     RESOURCE_NOT_FOUND(
             "/resource-not-found",
             "Resource not found",
             "The requested resource was not found."
     ),
-
     INVALID_INSTRUCTOR_ROLE(
     "/invalid-instructor-role",
             "Invalid instructor role",

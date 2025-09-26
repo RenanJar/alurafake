@@ -6,6 +6,8 @@ import br.com.alura.AluraFake.domain.task.validator.TaskValidator;
 import br.com.alura.AluraFake.infra.repository.TaskRepository;
 import br.com.alura.AluraFake.domain.enumeration.Type;
 import br.com.alura.AluraFake.domain.task.util.TaskMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +17,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class TaskService {
+
+    private static final Logger log = LoggerFactory.getLogger(TaskService.class);
 
     private final TaskAnswerService taskAnswerService;
     private final TaskRepository taskRepository;
@@ -30,7 +34,9 @@ public class TaskService {
 
     @Transactional(rollbackFor = Exception.class)
     public Integer createNewTask(TaskDTO request) {
+        log.info("Starting task validations");
         taskValidator.validate(request);
+        log.info("task validations completed");
 
         Task newTask = taskMapper.toEntity(request);
         taskRepository.updateOrder(request.getCourseId(), request.getOrder());

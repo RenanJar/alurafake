@@ -22,7 +22,13 @@ public class TaskController {
 
     @PostMapping("new")
     public ResponseEntity createNewTask(@RequestBody @Valid TaskDTO request) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(Map.of("id",taskService.createNewTask(request)));
+        return ResponseEntity.status(HttpStatus.CREATED).body(Map.of("id", taskService.createNewTask(request)));
     }
+
+    // Consolidei os diferentes endpoints de criação de tasks em um único endpoint,
+    // pois os dados recebidos do client eram praticamente os mesmos. Isso permite
+    // reaproveitar o código existente e facilita a manutenção caso surjam novos
+    // tipos de tasks, evitando a necessidade de criar endpoints adicionais.
+
 
 }

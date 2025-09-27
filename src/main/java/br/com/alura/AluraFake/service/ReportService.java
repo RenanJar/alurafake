@@ -1,6 +1,6 @@
 package br.com.alura.AluraFake.service;
 
-import br.com.alura.AluraFake.api.dto.user.InstructorCourseReportDTO;
+import br.com.alura.AluraFake.api.dto.report.InstructorCourseReportDTO;
 import br.com.alura.AluraFake.domain.error.exception.EntityNotFoundException;
 import br.com.alura.AluraFake.domain.error.exception.InvalidUserRoleException;
 import br.com.alura.AluraFake.domain.enumeration.Role;

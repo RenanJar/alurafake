@@ -1,6 +1,7 @@
 package br.com.alura.AluraFake.service;
 
 import br.com.alura.AluraFake.api.dto.task.TaskAnswerDTO;
+import br.com.alura.AluraFake.domain.task.entity.TaskAnswer;
 import br.com.alura.AluraFake.infra.repository.TaskAnswerRepository;
 import br.com.alura.AluraFake.domain.task.util.TaskAnswerMapper;
 import org.slf4j.Logger;
@@ -24,18 +25,14 @@ public class TaskAnswerService {
         this.taskAnswerMapper = taskAnswerMapper;
     }
 
-    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public boolean saveList(List<TaskAnswerDTO> taskAnswerDTO, Integer taskId) {
-        try{
-            log.info("starting taskAnswer persistence");
-            taskAnswerDTO.stream()
-                    .map(dto->taskAnswerMapper.toEntity(dto, taskId))
-                    .forEach(taskAnswerRepository::save);
-            log.info("persistence finished");
-        }catch (Exception e){
-            log.info("persistence error");
-            return false;
-        }
-        return true;
+    @Transactional
+    public List<TaskAnswer> saveList(List<TaskAnswerDTO> taskAnswerDTO, Integer taskId) {
+        log.info("starting taskAnswer persistence");
+         List<TaskAnswer> result = taskAnswerDTO.stream()
+                .map(dto -> taskAnswerMapper.toEntity(dto, taskId))
+                .map(taskAnswerRepository::save)
+                .toList();
+        log.info("persistence finished");
+        return result;
     }
 }

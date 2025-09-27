@@ -1,6 +1,6 @@
 package br.com.alura.AluraFake.api.controller;
 
-import br.com.alura.AluraFake.api.dto.user.InstructorCourseReportDTO;
+import br.com.alura.AluraFake.api.dto.report.InstructorCourseReportDTO;
 import br.com.alura.AluraFake.service.ReportService;
 import br.com.alura.AluraFake.util.report.ReportResponse;
 import org.springframework.http.ResponseEntity;

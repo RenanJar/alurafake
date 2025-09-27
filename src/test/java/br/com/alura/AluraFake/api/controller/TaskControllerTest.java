@@ -40,7 +40,7 @@ class TaskControllerTest {
         request.setType(Type.OPEN_TEXT);
         request.setStatement("Statement");
         request.setOrder(1);
-        request.setCourseId(123);
+        request.setCourseId(123L);
     }
 
     @Test

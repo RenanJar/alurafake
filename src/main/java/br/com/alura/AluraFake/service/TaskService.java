@@ -54,11 +54,11 @@ public class TaskService {
         return List.of();
     }
 
-    public List<TaskDTO> findByCourseIdOrderByOrderAsc(Integer courseId) {
+    public List<TaskDTO> findByCourseIdOrderByOrderAsc(Long courseId) {
         return taskRepository.findByCourseIdOrderByOrderAsc(courseId).stream().map(taskMapper::toDto).collect(Collectors.toList());
     }
 
-    public List<TaskDTO> findByCourseId(Integer courseId) {
+    public List<TaskDTO> findByCourseId(Long courseId) {
         return taskRepository.findByCourseId(courseId).stream().map(taskMapper::toDto).collect(Collectors.toList());
     }
 

@@ -36,7 +36,7 @@ class TaskServiceTest {
     void shouldCreateNewTaskAndSaveOptions() {
         TaskDTO request = new TaskDTO();
         request.setType(Type.SINGLE_CHOICE);
-        request.setCourseId(1);
+        request.setCourseId(1L);
         request.setOrder(1);
         request.setOptions(List.of(mock(TaskAnswerDTO.class), mock(TaskAnswerDTO.class)));
 
@@ -50,7 +50,7 @@ class TaskServiceTest {
 
         assertEquals(100, taskId);
         verify(taskValidator).validate(request);
-        verify(taskRepository).updateOrder(1, 1);
+        verify(taskRepository).updateOrder(1L, 1);
         verify(taskRepository).save(savedTask);
         verify(taskAnswerService).saveList(request.getOptions(), 100);
     }
@@ -59,7 +59,7 @@ class TaskServiceTest {
     void shouldReturnEmptyListForNonChoiceTaskType() {
         TaskDTO request = new TaskDTO();
         request.setType(Type.OPEN_TEXT);
-        request.setCourseId(1);
+        request.setCourseId(1L);
         request.setOrder(1);
 
         Task savedTask = new Task();
@@ -77,10 +77,10 @@ class TaskServiceTest {
     void shouldMapTasksFromRepositoryByCourseIdOrderAsc() {
         Task task = new Task();
         TaskDTO dto = new TaskDTO();
-        when(taskRepository.findByCourseIdOrderByOrderAsc(1)).thenReturn(List.of(task));
+        when(taskRepository.findByCourseIdOrderByOrderAsc(1L)).thenReturn(List.of(task));
         when(taskMapper.toDto(task)).thenReturn(dto);
 
-        List<TaskDTO> result = taskService.findByCourseIdOrderByOrderAsc(1);
+        List<TaskDTO> result = taskService.findByCourseIdOrderByOrderAsc(1L);
 
         assertEquals(1, result.size());
         assertEquals(dto, result.get(0));
@@ -90,10 +90,10 @@ class TaskServiceTest {
     void shouldMapTasksFromRepositoryByCourseId() {
         Task task = new Task();
         TaskDTO dto = new TaskDTO();
-        when(taskRepository.findByCourseId(1)).thenReturn(List.of(task));
+        when(taskRepository.findByCourseId(1L)).thenReturn(List.of(task));
         when(taskMapper.toDto(task)).thenReturn(dto);
 
-        List<TaskDTO> result = taskService.findByCourseId(1);
+        List<TaskDTO> result = taskService.findByCourseId(1L);
 
         assertEquals(1, result.size());
         assertEquals(dto, result.get(0));

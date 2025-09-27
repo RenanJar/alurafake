@@ -1,7 +1,7 @@
 package br.com.alura.AluraFake.integrationtest.domain.course;
 
 import br.com.alura.AluraFake.api.dto.task.TaskDTO;
-import br.com.alura.AluraFake.api.dto.user.InstructorCourseReportDTO;
+import br.com.alura.AluraFake.api.dto.report.InstructorCourseReportDTO;
 import br.com.alura.AluraFake.domain.enumeration.Status;
 import br.com.alura.AluraFake.domain.enumeration.Type;
 import br.com.alura.AluraFake.integrationtest.base.IntegrationTestBase;
@@ -77,7 +77,7 @@ public class ExportCourseInstructorReportIT extends IntegrationTestBase {
     }
 
     void givenAvalidTaskSingleChoice() {
-        taskSingleChoice.setCourseId(1);
+        taskSingleChoice.setCourseId(1L);
         taskSingleChoice.setOrder(1);
         taskSingleChoice.setStatement("Pergunta Teste");
         taskSingleChoice.setType(Type.SINGLE_CHOICE);
@@ -85,7 +85,7 @@ public class ExportCourseInstructorReportIT extends IntegrationTestBase {
     }
 
     void givenAvalidTaskMultipleChoice() {
-        taskMultiChoice.setCourseId(1);
+        taskMultiChoice.setCourseId(1L);
         taskMultiChoice.setOrder(1);
         taskMultiChoice.setStatement("Pergunta Teste 2");
         taskMultiChoice.setType(Type.MULTIPLE_CHOICE);
@@ -93,7 +93,7 @@ public class ExportCourseInstructorReportIT extends IntegrationTestBase {
     }
 
     void givenAvalidTaskOpenText() {
-        taskOpenText.setCourseId(1);
+        taskOpenText.setCourseId(1L);
         taskOpenText.setOrder(1);
         taskOpenText.setStatement("Pergunta Teste 3");
         taskOpenText.setType(Type.OPEN_TEXT);

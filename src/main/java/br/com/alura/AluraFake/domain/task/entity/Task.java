@@ -24,7 +24,7 @@ public class Task {
     private Course course;
 
     @Column(name = "course_id", insertable = false, updatable = false)
-    private Integer courseId;
+    private Long courseId;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "task_type", nullable = false)
@@ -73,7 +73,7 @@ public class Task {
         this.course = course;
     }
 
-    public Integer getCourseId() {
+    public Long getCourseId() {
         return courseId;
     }
 

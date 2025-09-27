@@ -2,6 +2,7 @@ package br.com.alura.AluraFake.service;
 
 import br.com.alura.AluraFake.api.dto.task.TaskDTO;
 import br.com.alura.AluraFake.domain.task.entity.Task;
+import br.com.alura.AluraFake.domain.task.entity.TaskAnswer;
 import br.com.alura.AluraFake.domain.task.validator.TaskValidator;
 import br.com.alura.AluraFake.infra.repository.TaskRepository;
 import br.com.alura.AluraFake.domain.enumeration.Type;
@@ -46,23 +47,23 @@ public class TaskService {
         return newTask.getId();
     }
 
-    private boolean saveOptions(TaskDTO request, Integer taskId) {
+    private List<TaskAnswer> saveOptions(TaskDTO request, Integer taskId) {
         if (request.getType().equals(Type.MULTIPLE_CHOICE) || request.getType().equals(Type.SINGLE_CHOICE)) {
             return taskAnswerService.saveList(request.getOptions(), taskId);
         }
-        return false;
+        return List.of();
     }
 
-    public List<TaskDTO> findByCourseIdOrderByOrderAsc(Integer courseId) {
+    public List<TaskDTO> findByCourseIdOrderByOrderAsc(Long courseId) {
         return taskRepository.findByCourseIdOrderByOrderAsc(courseId).stream().map(taskMapper::toDto).collect(Collectors.toList());
     }
 
-    public List<TaskDTO> findByCourseId(Integer courseId) {
+    public List<TaskDTO> findByCourseId(Long courseId) {
         return taskRepository.findByCourseId(courseId).stream().map(taskMapper::toDto).collect(Collectors.toList());
     }
 
     public boolean hasAllTaskTypes(Long courseId) {
-        return !(taskRepository.hasAllTaskTypes(courseId).size() == Type.values().length);
+        return taskRepository.hasAllTaskTypes(courseId,Type.values().length);
     }
 
     public Boolean isTaskOrderContinuous(Long courseId) {

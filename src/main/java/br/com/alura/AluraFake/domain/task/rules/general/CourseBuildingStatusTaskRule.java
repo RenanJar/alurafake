@@ -21,7 +21,7 @@ public class CourseBuildingStatusTaskRule implements TaskRule {
 
     @Override
     public List<ValidationError> validate(TaskDTO taskRequest) {
-        Optional<Course> course = courseRepository.findById(taskRequest.getCourseId());
+        Optional<Course> course = courseRepository.findById(taskRequest.getCourseId().intValue());
 
         if (!course.isPresent()) {
             return List.of();

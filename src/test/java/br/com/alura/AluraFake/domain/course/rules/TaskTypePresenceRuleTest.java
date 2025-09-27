@@ -26,7 +26,7 @@ class TaskTypePresenceRuleTest {
     void shouldReturnErrorWhenNotAllTaskTypesArePresent() {
         Long courseId = 1L;
 
-        when(taskService.hasAllTaskTypes(courseId)).thenReturn(true);
+        when(taskService.hasAllTaskTypes(courseId)).thenReturn(false);
 
         List<ValidationError> errors = rule.validate(courseId);
 
@@ -40,7 +40,7 @@ class TaskTypePresenceRuleTest {
     void shouldReturnNoErrorWhenAllTaskTypesArePresent() {
         Long courseId = 2L;
 
-        when(taskService.hasAllTaskTypes(courseId)).thenReturn(false);
+        when(taskService.hasAllTaskTypes(courseId)).thenReturn(true);
 
         List<ValidationError> errors = rule.validate(courseId);
 

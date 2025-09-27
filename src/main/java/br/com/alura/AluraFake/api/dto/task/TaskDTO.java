@@ -10,7 +10,7 @@ import java.util.List;
 public class TaskDTO {
 
     @NotNull
-    private Integer courseId;
+    private Long courseId;
 
     @NotNull
     @NotBlank
@@ -24,7 +24,7 @@ public class TaskDTO {
 
     private List<TaskAnswerDTO> options;
 
-    public TaskDTO(Integer courseId, Integer order, String statement, Type type, List<TaskAnswerDTO> options) {
+    public TaskDTO(Long courseId, Integer order, String statement, Type type, List<TaskAnswerDTO> options) {
         this.courseId = courseId;
         this.order = order;
         this.statement = statement;
@@ -35,11 +35,11 @@ public class TaskDTO {
     public TaskDTO() {
     }
 
-    public Integer getCourseId() {
+    public Long getCourseId() {
         return courseId;
     }
 
-    public void setCourseId(Integer courseId) {
+    public void setCourseId(Long courseId) {
         this.courseId = courseId;
     }
 

@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface TaskRepository extends JpaRepository<Task, Integer>{
 
-    List<Task> findByCourseId(Integer courseId);
+    List<Task> findByCourseId(Long courseId);
 
     @Modifying
     @Query("""
@@ -19,15 +19,15 @@ public interface TaskRepository extends JpaRepository<Task, Integer>{
             WHERE task.courseId = :cursoId
             AND task.order >= :ordem
             """)
-    int updateOrder(@Param("cursoId") Integer cursoId,
+    int updateOrder(@Param("cursoId") Long cursoId,
                     @Param("ordem") Integer ordem);
 
     @Query("""
-            SELECT DISTINCT t.typeTask
-            FROM Task t
-            WHERE t.course.id = :courseId
-            """)
-    List<Integer> hasAllTaskTypes(@Param("courseId") Long courseId);
+       SELECT CASE WHEN COUNT(DISTINCT t.typeTask) = :totalTypes THEN true ELSE false END
+       FROM Task t
+       WHERE t.course.id = :courseId
+    """)
+    boolean hasAllTaskTypes(@Param("courseId") Long courseId, @Param("totalTypes") long totalTypes);
 
     @Query("""
             SELECT (MAX(t.order) - MIN(t.order) + 1) = COUNT(t)
@@ -36,5 +36,5 @@ public interface TaskRepository extends JpaRepository<Task, Integer>{
             """)
     Boolean isTaskOrderContinuous(@Param("courseId") Long courseId);
 
-    List<Task>findByCourseIdOrderByOrderAsc(Integer courseId);
+    List<Task>findByCourseIdOrderByOrderAsc(Long courseId);
 }

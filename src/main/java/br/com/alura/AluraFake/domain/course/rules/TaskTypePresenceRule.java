@@ -18,7 +18,7 @@ public class TaskTypePresenceRule implements CourseRule {
     @Override
     public List<ValidationError> validate(Long courseId) {
 
-        if (taskService.hasAllTaskTypes(courseId)) {
+        if (!taskService.hasAllTaskTypes(courseId)) {
             return List.of(new ValidationError(
                     "tasks",
                     "MISSING_TASK_TYPE",

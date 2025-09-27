@@ -1,6 +1,6 @@
 package br.com.alura.AluraFake.service;
 
-import br.com.alura.AluraFake.api.dto.user.InstructorCourseReportDTO;
+import br.com.alura.AluraFake.api.dto.report.InstructorCourseReportDTO;
 import br.com.alura.AluraFake.domain.course.validator.CourseValidator;
 import br.com.alura.AluraFake.domain.enumeration.Status;
 import br.com.alura.AluraFake.infra.repository.CourseRepository;

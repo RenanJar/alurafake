@@ -1,4 +1,4 @@
-package br.com.alura.AluraFake.api.dto.user;
+package br.com.alura.AluraFake.api.dto.report;
 
 import br.com.alura.AluraFake.domain.enumeration.Status;
 

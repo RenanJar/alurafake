@@ -28,7 +28,7 @@ class CourseBuildingStatusTaskRuleTest {
     @Test
     void shouldReturnNoErrorWhenCourseNotFound() {
         TaskDTO task = new TaskDTO();
-        task.setCourseId(1);
+        task.setCourseId(1L);
 
         when(courseRepository.findById(1)).thenReturn(Optional.empty());
 
@@ -41,7 +41,7 @@ class CourseBuildingStatusTaskRuleTest {
     @Test
     void shouldReturnErrorWhenCourseIsNotBuilding() {
         TaskDTO task = new TaskDTO();
-        task.setCourseId(2);
+        task.setCourseId(2L);
 
         Course course = new Course();
         course.setStatus(Status.PUBLISHED);
@@ -58,7 +58,7 @@ class CourseBuildingStatusTaskRuleTest {
     @Test
     void shouldReturnNoErrorWhenCourseIsBuilding() {
         TaskDTO task = new TaskDTO();
-        task.setCourseId(3);
+        task.setCourseId(3L);
 
         Course course = new Course();
         course.setStatus(Status.BUILDING);

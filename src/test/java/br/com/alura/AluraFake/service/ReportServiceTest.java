@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-class ReportServiceExceptionTest {
+class ReportServiceTest {
 
     private CourseService courseService;
     private UserRepository userRepository;

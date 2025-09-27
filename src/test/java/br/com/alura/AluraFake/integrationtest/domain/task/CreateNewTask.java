@@ -26,7 +26,7 @@ public class CreateNewTask extends IntegrationTestBase {
     }
 
     void givenAvalidTaskSingleChoice() {
-        task.setCourseId(1);
+        task.setCourseId(1L);
         task.setOrder(1);
         task.setStatement("Pergunta Teste");
         task.setType(Type.SINGLE_CHOICE);

@@ -47,27 +47,29 @@ Os esboços dos endpoints já estão criados — sua tarefa será **implementar 
 
 ##### 1.1 — Atividade de Resposta Aberta
 
-**Endpoint:** `/task/new/opentext`
+**Endpoint:** `/task/new`
 ```bash
-curl -w "%{http_code}\n" -X POST http://localhost:8080/task/new/opentext \
+curl -w "%{http_code}\n" -X POST http://localhost:8080/task/new \
   -H "Content-Type: application/json" \
   -d '{
-        "courseId": 42,
+        "courseId": 1,
         "statement": "O que aprendemos na aula de hoje?",
+        type":"OPEN_TEXT",
         "order": 1
       }'
  ```
 
 #### 1.2 — Atividade de alternativa única
 
-**Endpoint:** `/task/new/singlechoice`
+**Endpoint:** `/task/new`
 ```bash
-curl -w "%{http_code}\n" -X POST http://localhost:8080/task/new/singlechoice \
+curl -w "%{http_code}\n" -X POST http://localhost:8080/task/new\
   -H "Content-Type: application/json" \
   -d '{
         "courseId": 42,
         "statement": "O que aprendemos hoje?",
         "order": 2,
+        "type":"SINGLE_CHOICE",
         "options": [
             {
                 "option": "Java",
@@ -94,14 +96,15 @@ curl -w "%{http_code}\n" -X POST http://localhost:8080/task/new/singlechoice \
 
 ##### 1.3 — Atividade de múltipla escolha
 
-**Endpoint:** `/task/new/multiplechoice`
+**Endpoint:** `/task/new`
 ```bash
-curl -w "%{http_code}\n" -X POST http://localhost:8080/task/new/singlechoice \
+curl -w "%{http_code}\n" -X POST http://localhost:8080/task/new \
   -H "Content-Type: application/json" \
   -d '{
         "courseId": 42,
         "statement": "O que aprendemos hoje?",
         "order": 2,
+        "type":"MULTIPLE_CHOICE",
         "options": [
             {
                 "option": "Java",
@@ -169,7 +172,7 @@ Implemente o endpoint `/course/{id}/publish` validando essas regras antes da pub
 
 Exemplo de requisição:
 ```bash
-curl -w "%{http_code}\n" -X POST http://localhost:8080/course/42/publish
+curl -w "%{http_code}\n" -X POST http://localhost:8080/course/1/publish
 ```
 
 

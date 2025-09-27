@@ -59,8 +59,14 @@ public class CourseController {
         return ResponseEntity.ok(courses);
     }
 
-    @PostMapping("/{id}/publish")
+    @PatchMapping("/{id}/publish")
     public ResponseEntity publishCourse(@PathVariable("id") Long id) {
+
+        // Optei pelo método PATCH porque, na prática, a ação de publicar
+        // consiste apenas em atualizar o status do curso, sem alterar
+        // outros dados. Como se trata de uma modificação parcial, PATCH
+        // seria o método HTTP mais apropriado.
+
         courseService.publishCourse(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

@@ -2,6 +2,7 @@ package br.com.alura.AluraFake.api.controller;
 
 import br.com.alura.AluraFake.api.dto.course.NewCourseDTO;
 import br.com.alura.AluraFake.domain.course.entity.Course;
+import br.com.alura.AluraFake.domain.error.exception.EntityNotFoundException;
 import br.com.alura.AluraFake.domain.user.entity.User;
 import br.com.alura.AluraFake.domain.enumeration.Role;
 import br.com.alura.AluraFake.infra.repository.CourseRepository;
@@ -119,4 +120,27 @@ class CourseControllerTest {
                 .andExpect(jsonPath("$[2].description").value("Curso de spring"));
     }
 
+    @Test
+    void shouldPublishCourseAndReturnNoContent() throws Exception {
+        Long courseId = 1L;
+        doNothing().when(courseService).publishCourse(courseId);
+
+        mockMvc.perform(patch("/course/{id}/publish", courseId))
+                .andExpect(status().isNoContent());
+
+        verify(courseService, times(1)).publishCourse(courseId);
+    }
+
+    @Test
+    void shouldReturnNotFoundIfCourseDoesNotExist() throws Exception {
+        Long courseId = 999L;
+
+        doThrow(new EntityNotFoundException("Course not found"))
+                .when(courseService).publishCourse(courseId);
+
+        mockMvc.perform(patch("/course/{id}/publish", courseId))
+                .andExpect(status().isNotFound());
+
+        verify(courseService, times(1)).publishCourse(courseId);
+    }
 }

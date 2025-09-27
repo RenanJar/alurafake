@@ -1,7 +1,7 @@
 package br.com.alura.AluraFake.integrationtest.domain.course;
 
 import br.com.alura.AluraFake.api.dto.task.TaskDTO;
-import br.com.alura.AluraFake.api.dto.user.InstructorCourseReportDTO;
+import br.com.alura.AluraFake.api.dto.report.InstructorCourseReportDTO;
 import br.com.alura.AluraFake.domain.enumeration.Status;
 import br.com.alura.AluraFake.domain.enumeration.Type;
 import br.com.alura.AluraFake.integrationtest.base.IntegrationTestBase;

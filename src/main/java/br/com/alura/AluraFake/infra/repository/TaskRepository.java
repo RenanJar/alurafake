@@ -23,11 +23,11 @@ public interface TaskRepository extends JpaRepository<Task, Integer>{
                     @Param("ordem") Integer ordem);
 
     @Query("""
-            SELECT DISTINCT t.typeTask
-            FROM Task t
-            WHERE t.course.id = :courseId
-            """)
-    List<Integer> hasAllTaskTypes(@Param("courseId") Long courseId);
+       SELECT CASE WHEN COUNT(DISTINCT t.typeTask) = :totalTypes THEN true ELSE false END
+       FROM Task t
+       WHERE t.course.id = :courseId
+    """)
+    boolean hasAllTaskTypes(@Param("courseId") Long courseId, @Param("totalTypes") long totalTypes);
 
     @Query("""
             SELECT (MAX(t.order) - MIN(t.order) + 1) = COUNT(t)

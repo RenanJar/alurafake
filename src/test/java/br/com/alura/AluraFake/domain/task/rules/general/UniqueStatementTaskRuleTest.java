@@ -26,49 +26,49 @@ class UniqueStatementTaskRuleTest {
     @Test
     void shouldReturnNoErrorWhenNoExistingTasks() {
         TaskDTO task = new TaskDTO();
-        task.setCourseId(1);
+        task.setCourseId(1L);
         task.setStatement("New Task");
 
-        when(taskService.findByCourseId(1)).thenReturn(List.of());
+        when(taskService.findByCourseId(1L)).thenReturn(List.of());
 
         List<ValidationError> errors = rule.validate(task);
 
         assertTrue(errors.isEmpty());
-        verify(taskService).findByCourseId(1);
+        verify(taskService).findByCourseId(1L);
     }
 
     @Test
     void shouldReturnNoErrorWhenStatementIsUnique() {
         TaskDTO task = new TaskDTO();
-        task.setCourseId(1);
+        task.setCourseId(1L);
         task.setStatement("Unique Task");
 
         TaskDTO existingTask = new TaskDTO();
         existingTask.setStatement("Different Task");
 
-        when(taskService.findByCourseId(1)).thenReturn(List.of(existingTask));
+        when(taskService.findByCourseId(1L)).thenReturn(List.of(existingTask));
 
         List<ValidationError> errors = rule.validate(task);
 
         assertTrue(errors.isEmpty());
-        verify(taskService).findByCourseId(1);
+        verify(taskService).findByCourseId(1L);
     }
 
     @Test
     void shouldReturnErrorWhenStatementAlreadyExists() {
         TaskDTO task = new TaskDTO();
-        task.setCourseId(1);
+        task.setCourseId(1L);
         task.setStatement("Duplicate Task");
 
         TaskDTO existingTask = new TaskDTO();
         existingTask.setStatement("  Duplicate   Task ");
 
-        when(taskService.findByCourseId(1)).thenReturn(List.of(existingTask));
+        when(taskService.findByCourseId(1L)).thenReturn(List.of(existingTask));
 
         List<ValidationError> errors = rule.validate(task);
 
         assertEquals(1, errors.size());
         assertEquals("DUPLICATE_STATEMENT", errors.get(0).getCode());
-        verify(taskService).findByCourseId(1);
+        verify(taskService).findByCourseId(1L);
     }
 }

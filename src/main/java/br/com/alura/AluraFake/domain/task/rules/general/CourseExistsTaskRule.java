@@ -22,7 +22,7 @@ public class CourseExistsTaskRule implements TaskRule {
 
     @Override
     public List<ValidationError> validate(TaskDTO taskRequest) {
-        Optional<Course> course = courseRepository.findById(taskRequest.getCourseId());
+        Optional<Course> course = courseRepository.findById(taskRequest.getCourseId().intValue());
 
         if(!course.isPresent()) {
             throw new EntityNotFoundException("The specified course could not be found.");

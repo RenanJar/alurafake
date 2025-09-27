@@ -26,15 +26,15 @@ class TaskOrderValidationTaskRuleTest {
     @Test
     void shouldReturnNoErrorWhenNoExistingTasks() {
         TaskDTO task = new TaskDTO();
-        task.setCourseId(1);
+        task.setCourseId(1L);
         task.setOrder(1);
 
-        when(taskService.findByCourseIdOrderByOrderAsc(1)).thenReturn(List.of());
+        when(taskService.findByCourseIdOrderByOrderAsc(1L)).thenReturn(List.of());
 
         List<ValidationError> errors = rule.validate(task);
 
         assertTrue(errors.isEmpty());
-        verify(taskService).findByCourseIdOrderByOrderAsc(1);
+        verify(taskService).findByCourseIdOrderByOrderAsc(1L);
     }
 
     @Test
@@ -43,15 +43,15 @@ class TaskOrderValidationTaskRuleTest {
         existingTask.setOrder(2);
 
         TaskDTO task = new TaskDTO();
-        task.setCourseId(1);
+        task.setCourseId(1L);
         task.setOrder(3);
 
-        when(taskService.findByCourseIdOrderByOrderAsc(1)).thenReturn(List.of(existingTask));
+        when(taskService.findByCourseIdOrderByOrderAsc(1L)).thenReturn(List.of(existingTask));
 
         List<ValidationError> errors = rule.validate(task);
 
         assertTrue(errors.isEmpty());
-        verify(taskService).findByCourseIdOrderByOrderAsc(1);
+        verify(taskService).findByCourseIdOrderByOrderAsc(1L);
     }
 
     @Test
@@ -60,15 +60,15 @@ class TaskOrderValidationTaskRuleTest {
         existingTask.setOrder(2);
 
         TaskDTO task = new TaskDTO();
-        task.setCourseId(1);
+        task.setCourseId(1L);
         task.setOrder(5);
 
-        when(taskService.findByCourseIdOrderByOrderAsc(1)).thenReturn(List.of(existingTask));
+        when(taskService.findByCourseIdOrderByOrderAsc(1L)).thenReturn(List.of(existingTask));
 
         List<ValidationError> errors = rule.validate(task);
 
         assertEquals(1, errors.size());
         assertEquals("INVALID_TASK_ORDER", errors.get(0).getCode());
-        verify(taskService).findByCourseIdOrderByOrderAsc(1);
+        verify(taskService).findByCourseIdOrderByOrderAsc(1L);
     }
 }

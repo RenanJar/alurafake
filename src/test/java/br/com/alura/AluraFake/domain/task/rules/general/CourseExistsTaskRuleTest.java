@@ -30,7 +30,7 @@ class CourseExistsTaskRuleTest {
     @Test
     void shouldReturnErrorWhenCourseNotFound() {
         TaskDTO task = new TaskDTO();
-        task.setCourseId(1);
+        task.setCourseId(1L);
 
         when(courseRepository.findById(1)).thenReturn(Optional.empty());
 
@@ -42,7 +42,7 @@ class CourseExistsTaskRuleTest {
     @Test
     void shouldReturnNoErrorWhenCourseExists() {
         TaskDTO task = new TaskDTO();
-        task.setCourseId(2);
+        task.setCourseId(2L);
 
         Course course = new Course();
         when(courseRepository.findById(2)).thenReturn(Optional.of(course));

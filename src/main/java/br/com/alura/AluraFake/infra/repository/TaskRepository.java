@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface TaskRepository extends JpaRepository<Task, Integer>{
 
-    List<Task> findByCourseId(Integer courseId);
+    List<Task> findByCourseId(Long courseId);
 
     @Modifying
     @Query("""
@@ -19,7 +19,7 @@ public interface TaskRepository extends JpaRepository<Task, Integer>{
             WHERE task.courseId = :cursoId
             AND task.order >= :ordem
             """)
-    int updateOrder(@Param("cursoId") Integer cursoId,
+    int updateOrder(@Param("cursoId") Long cursoId,
                     @Param("ordem") Integer ordem);
 
     @Query("""
@@ -36,5 +36,5 @@ public interface TaskRepository extends JpaRepository<Task, Integer>{
             """)
     Boolean isTaskOrderContinuous(@Param("courseId") Long courseId);
 
-    List<Task>findByCourseIdOrderByOrderAsc(Integer courseId);
+    List<Task>findByCourseIdOrderByOrderAsc(Long courseId);
 }

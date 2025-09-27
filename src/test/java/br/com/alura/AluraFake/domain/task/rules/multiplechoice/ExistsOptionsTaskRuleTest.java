@@ -46,6 +46,6 @@ class ExistsOptionsTaskRuleTest {
 
         List<ValidationError> errors = rule.validate(task);
 
-        assertTrue(errors.isEmpty());
+        assertTrue(!errors.isEmpty());
     }
 }

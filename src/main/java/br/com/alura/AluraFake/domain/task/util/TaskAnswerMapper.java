@@ -15,7 +15,7 @@ public class TaskAnswerMapper {
         this.taskRepository = taskRepository;
     }
 
-    public TaskAnswer toEntity(TaskAnswerDTO taskAnswerDTO, Integer taskId) {
+    public TaskAnswer toEntity(TaskAnswerDTO taskAnswerDTO, Long taskId) {
       TaskAnswer taskAnswer = new TaskAnswer();
       Task task = taskRepository.getReferenceById(taskId);
 

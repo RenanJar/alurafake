@@ -34,7 +34,7 @@ public class TaskService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public Integer createNewTask(TaskDTO request) {
+    public Long createNewTask(TaskDTO request) {
         log.info("Starting task validations");
         taskValidator.validate(request);
         log.info("task validations completed");
@@ -47,7 +47,7 @@ public class TaskService {
         return newTask.getId();
     }
 
-    private List<TaskAnswer> saveOptions(TaskDTO request, Integer taskId) {
+    private List<TaskAnswer> saveOptions(TaskDTO request, Long taskId) {
         if (request.getType().equals(Type.MULTIPLE_CHOICE) || request.getType().equals(Type.SINGLE_CHOICE)) {
             return taskAnswerService.saveList(request.getOptions(), taskId);
         }

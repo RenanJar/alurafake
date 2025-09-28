@@ -16,7 +16,7 @@ public class TaskMapper {
 
     public Task toEntity(TaskDTO request) {
         Task task = new Task();
-        Course course = courseRepository.getReferenceById(request.getCourseId().intValue());
+        Course course = courseRepository.getReferenceById(request.getCourseId());
 
         Optional.ofNullable(request.getOrder()).ifPresent(task::setOrder);
         Optional.ofNullable(request.getStatement()).ifPresent(task::setStatement);

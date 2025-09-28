@@ -26,7 +26,7 @@ public class TaskAnswerService {
     }
 
     @Transactional
-    public List<TaskAnswer> saveList(List<TaskAnswerDTO> taskAnswerDTO, Integer taskId) {
+    public List<TaskAnswer> saveList(List<TaskAnswerDTO> taskAnswerDTO, Long taskId) {
         log.info("starting taskAnswer persistence");
          List<TaskAnswer> result = taskAnswerDTO.stream()
                 .map(dto -> taskAnswerMapper.toEntity(dto, taskId))

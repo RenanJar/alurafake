@@ -34,21 +34,21 @@ class TaskAnswerServiceTest {
         TaskAnswer entity1 = new TaskAnswer();
         TaskAnswer entity2 = new TaskAnswer();
 
-        when(taskAnswerMapper.toEntity(dto1, 10)).thenReturn(entity1);
-        when(taskAnswerMapper.toEntity(dto2, 10)).thenReturn(entity2);
+        when(taskAnswerMapper.toEntity(dto1, 10L)).thenReturn(entity1);
+        when(taskAnswerMapper.toEntity(dto2, 10L)).thenReturn(entity2);
 
         when(taskAnswerRepository.save(entity1)).thenReturn(entity1);
         when(taskAnswerRepository.save(entity2)).thenReturn(entity2);
 
 
-        List<TaskAnswer> savedEntities = taskAnswerService.saveList(dtos, 10);
+        List<TaskAnswer> savedEntities = taskAnswerService.saveList(dtos, 10L);
 
         assertEquals(2, savedEntities.size());
         assertTrue(savedEntities.contains(entity1));
         assertTrue(savedEntities.contains(entity2));
 
-        verify(taskAnswerMapper).toEntity(dto1, 10);
-        verify(taskAnswerMapper).toEntity(dto2, 10);
+        verify(taskAnswerMapper).toEntity(dto1, 10L);
+        verify(taskAnswerMapper).toEntity(dto2, 10L);
         verify(taskAnswerRepository).save(entity1);
         verify(taskAnswerRepository).save(entity2);
     }
@@ -58,14 +58,14 @@ class TaskAnswerServiceTest {
         TaskAnswerDTO dto = new TaskAnswerDTO();
         List<TaskAnswerDTO> dtos = List.of(dto);
 
-        when(taskAnswerMapper.toEntity(dto, 5)).thenThrow(new RuntimeException("Mapper error"));
+        when(taskAnswerMapper.toEntity(dto, 5L)).thenThrow(new RuntimeException("Mapper error"));
 
         RuntimeException ex = assertThrows(RuntimeException.class, () ->
-                taskAnswerService.saveList(dtos, 5)
+                taskAnswerService.saveList(dtos, 5L)
         );
 
         assertEquals("Mapper error", ex.getMessage());
-        verify(taskAnswerMapper).toEntity(dto, 5);
+        verify(taskAnswerMapper).toEntity(dto, 5L);
         verify(taskAnswerRepository, never()).save(any());
     }
 }

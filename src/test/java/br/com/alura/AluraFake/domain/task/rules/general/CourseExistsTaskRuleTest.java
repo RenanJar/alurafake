@@ -32,11 +32,11 @@ class CourseExistsTaskRuleTest {
         TaskDTO task = new TaskDTO();
         task.setCourseId(1L);
 
-        when(courseRepository.findById(1)).thenReturn(Optional.empty());
+        when(courseRepository.findById(1L)).thenReturn(Optional.empty());
 
         assertThrows(EntityNotFoundException.class,()->{rule.validate(task);});
 
-        verify(courseRepository).findById(1);
+        verify(courseRepository).findById(1L);
     }
 
     @Test
@@ -45,11 +45,11 @@ class CourseExistsTaskRuleTest {
         task.setCourseId(2L);
 
         Course course = new Course();
-        when(courseRepository.findById(2)).thenReturn(Optional.of(course));
+        when(courseRepository.findById(2L)).thenReturn(Optional.of(course));
 
         List<ValidationError> errors = rule.validate(task);
 
         assertTrue(errors.isEmpty());
-        verify(courseRepository).findById(2);
+        verify(courseRepository).findById(2L);
     }
 }

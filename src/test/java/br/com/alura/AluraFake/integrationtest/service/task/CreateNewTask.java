@@ -1,4 +1,4 @@
-package br.com.alura.AluraFake.integrationtest.domain.task;
+package br.com.alura.AluraFake.integrationtest.service.task;
 
 import br.com.alura.AluraFake.api.dto.task.TaskDTO;
 import br.com.alura.AluraFake.domain.enumeration.Type;

@@ -43,12 +43,12 @@ class CourseServiceTest {
 
     @Test
     void shouldReturnTrueWhenCourseExists() {
-        when(courseRepository.existsById(1)).thenReturn(true);
+        when(courseRepository.existsById(1L)).thenReturn(true);
 
         boolean exists = courseService.existsById(1L);
 
         assertTrue(exists);
-        verify(courseRepository).existsById(1);
+        verify(courseRepository).existsById(1L);
     }
 
     @Test

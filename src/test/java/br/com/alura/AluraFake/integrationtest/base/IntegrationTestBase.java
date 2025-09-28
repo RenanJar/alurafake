@@ -1,6 +1,8 @@
 package br.com.alura.AluraFake.integrationtest.base;
 
+import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
@@ -15,8 +17,12 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @Testcontainers
 public class IntegrationTestBase {
 
+    @Autowired
+    private EntityManager entityManager;
+
     @Container
     static MySQLContainer<?> mysql = new MySQLContainer<>("mysql:8.1")
+            .withReuse(true)
             .withDatabaseName("testdb")
             .withUsername("root")
             .withPassword("root");
@@ -28,5 +34,10 @@ public class IntegrationTestBase {
         registry.add("spring.datasource.password", mysql::getPassword);
         registry.add("spring.jpa.hibernate.ddl-auto", () -> "update");
         registry.add("spring.jpa.database-platform", () -> "org.hibernate.dialect.MySQL8Dialect");
+    }
+
+    public void clearAndFlushEntityManager(){
+        entityManager.flush();
+        entityManager.clear();
     }
 }

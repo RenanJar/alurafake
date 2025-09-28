@@ -26,7 +26,7 @@ public class CourseService {
     }
 
     public boolean existsById(Long id) {
-        return courseRepository.existsById(id.intValue());
+        return courseRepository.existsById(id);
     }
 
     @Transactional

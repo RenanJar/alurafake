@@ -47,7 +47,7 @@ class TaskControllerTest {
     void shouldCreateTaskSuccessfully() throws Exception {
 
 
-        when(taskService.createNewTask(any(TaskDTO.class))).thenReturn(123);
+        when(taskService.createNewTask(any(TaskDTO.class))).thenReturn(123L);
 
         mockMvc.perform(post("/task/new")
                         .contentType(MediaType.APPLICATION_JSON)

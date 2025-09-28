@@ -5,28 +5,30 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public interface TaskRepository extends JpaRepository<Task, Integer>{
+public interface TaskRepository extends JpaRepository<Task, Long> {
 
     List<Task> findByCourseId(Long courseId);
 
     @Modifying
+    @Transactional
     @Query("""
             UPDATE Task task
             SET task.order = task.order + 1
-            WHERE task.courseId = :cursoId
-            AND task.order >= :ordem
+            WHERE task.courseId = :courseId
+            AND task.order >= :taskOrder
             """)
-    int updateOrder(@Param("cursoId") Long cursoId,
-                    @Param("ordem") Integer ordem);
+    int updateOrder(@Param("courseId") Long courseId,
+                    @Param("taskOrder") Integer taskOrder);
 
     @Query("""
-       SELECT CASE WHEN COUNT(DISTINCT t.typeTask) = :totalTypes THEN true ELSE false END
-       FROM Task t
-       WHERE t.course.id = :courseId
-    """)
+               SELECT CASE WHEN COUNT(DISTINCT t.typeTask) = :totalTypes THEN true ELSE false END
+               FROM Task t
+               WHERE t.course.id = :courseId
+            """)
     boolean hasAllTaskTypes(@Param("courseId") Long courseId, @Param("totalTypes") long totalTypes);
 
     @Query("""
@@ -36,5 +38,5 @@ public interface TaskRepository extends JpaRepository<Task, Integer>{
             """)
     Boolean isTaskOrderContinuous(@Param("courseId") Long courseId);
 
-    List<Task>findByCourseIdOrderByOrderAsc(Long courseId);
+    List<Task> findByCourseIdOrderByOrderAsc(Long courseId);
 }

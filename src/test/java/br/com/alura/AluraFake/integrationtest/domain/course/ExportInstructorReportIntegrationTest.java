@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.testcontainers.shaded.com.google.common.collect.MoreCollectors.onlyElement;
 
-public class ExportCourseInstructorReportIT extends IntegrationTestBase {
+public class ExportInstructorReportIntegrationTest extends IntegrationTestBase {
 
     @Autowired
     private TaskService taskService;

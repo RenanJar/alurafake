@@ -41,18 +41,18 @@ class TaskServiceTest {
         request.setOptions(List.of(mock(TaskAnswerDTO.class), mock(TaskAnswerDTO.class)));
 
         Task savedTask = new Task();
-        savedTask.setId(100);
+        savedTask.setId(100L);
 
         when(taskMapper.toEntity(request)).thenReturn(savedTask);
         when(taskAnswerService.saveList(request.getOptions(), savedTask.getId())).thenReturn(List.of());
 
-        Integer taskId = taskService.createNewTask(request);
+        Long taskId = taskService.createNewTask(request);
 
         assertEquals(100, taskId);
         verify(taskValidator).validate(request);
         verify(taskRepository).updateOrder(1L, 1);
         verify(taskRepository).save(savedTask);
-        verify(taskAnswerService).saveList(request.getOptions(), 100);
+        verify(taskAnswerService).saveList(request.getOptions(), 100L);
     }
 
     @Test
@@ -63,14 +63,14 @@ class TaskServiceTest {
         request.setOrder(1);
 
         Task savedTask = new Task();
-        savedTask.setId(101);
+        savedTask.setId(101L);
 
         when(taskMapper.toEntity(request)).thenReturn(savedTask);
 
-        Integer taskId = taskService.createNewTask(request);
+        Long taskId = taskService.createNewTask(request);
 
         assertEquals(101, taskId);
-        verify(taskAnswerService, never()).saveList(any(), anyInt());
+        verify(taskAnswerService, never()).saveList(any(), anyLong());
     }
 
     @Test
@@ -102,7 +102,7 @@ class TaskServiceTest {
     @Test
     void shouldReturnFalseIfNotAllTaskTypesPresent() {
 
-        when(taskRepository.hasAllTaskTypes(1L,3)).thenReturn(false);
+        when(taskRepository.hasAllTaskTypes(1L, 3)).thenReturn(false);
 
         boolean result = taskService.hasAllTaskTypes(1L);
 

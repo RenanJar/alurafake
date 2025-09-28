@@ -6,6 +6,8 @@ import br.com.alura.AluraFake.domain.enumeration.Type;
 import br.com.alura.AluraFake.domain.task.entity.Task;
 import br.com.alura.AluraFake.domain.task.entity.TaskAnswer;
 import br.com.alura.AluraFake.domain.user.entity.User;
+import br.com.alura.AluraFake.infra.repository.CourseRepository;
+import br.com.alura.AluraFake.infra.repository.UserRepository;
 import br.com.alura.AluraFake.infra.repository.projections.InstructorCourseReportProjection;
 import br.com.alura.AluraFake.integrationtest.base.IntegrationTestBase;
 import org.junit.jupiter.api.BeforeEach;

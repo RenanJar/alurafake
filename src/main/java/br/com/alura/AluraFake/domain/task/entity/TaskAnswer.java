@@ -10,7 +10,7 @@ public class TaskAnswer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @NotBlank
     @Size(min = 4, max = 80)
@@ -24,7 +24,7 @@ public class TaskAnswer {
     @JoinColumn(name = "task_id", nullable = false)
     private Task task;
 
-    public TaskAnswer(Integer id, String optionText, Boolean isCorrect, Task task) {
+    public TaskAnswer(Long id, String optionText, Boolean isCorrect, Task task) {
         this.id = id;
         this.optionText = optionText;
         this.isCorrect = isCorrect;
@@ -34,11 +34,11 @@ public class TaskAnswer {
     public TaskAnswer() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

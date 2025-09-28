@@ -1,6 +1,7 @@
 package br.com.alura.AluraFake.domain.course.entity;
 
 import br.com.alura.AluraFake.domain.task.entity.Task;
+import br.com.alura.AluraFake.domain.task.entity.TaskAnswer;
 import br.com.alura.AluraFake.domain.user.entity.User;
 import br.com.alura.AluraFake.domain.enumeration.Status;
 import jakarta.persistence.*;
@@ -25,7 +26,7 @@ public class Course {
     private Status status;
     private LocalDateTime publishedAt;
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Task> tasks;
+    private List<Task> tasks = new ArrayList<>();
     @Deprecated
     public Course(){}
 
@@ -67,5 +68,13 @@ public class Course {
 
     public LocalDateTime getPublishedAt() {
         return publishedAt;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void addTask(Task task) {
+        tasks.add(task);
     }
 }

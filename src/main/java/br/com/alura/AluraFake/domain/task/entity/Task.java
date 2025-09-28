@@ -5,12 +5,15 @@ import br.com.alura.AluraFake.domain.enumeration.Type;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Size(min = 4, max = 255)
     @Column(nullable = false)
@@ -30,7 +33,10 @@ public class Task {
     @Column(name = "task_type", nullable = false)
     private Type typeTask;
 
-    public Task(Integer id, String statement, Integer order, Course course, Type typeTask) {
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<TaskAnswer> taskAnswers = new ArrayList<>();
+
+    public Task(Long id, String statement, Integer order, Course course, Type typeTask) {
         this.id = id;
         this.statement = statement;
         this.order = order;
@@ -41,11 +47,11 @@ public class Task {
     public Task() {
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -83,5 +89,18 @@ public class Task {
 
     public void setTypeTask(Type typeTask) {
         this.typeTask = typeTask;
+    }
+
+    public List<TaskAnswer> getTaskAnswers() {
+        return taskAnswers;
+    }
+
+    public void setTaskAnswers(List<TaskAnswer> taskAnswers) {
+        this.taskAnswers = taskAnswers;
+    }
+
+    public void addAnswer(TaskAnswer answer) {
+        answer.setTask(this);
+        this.taskAnswers.add(answer);
     }
 }

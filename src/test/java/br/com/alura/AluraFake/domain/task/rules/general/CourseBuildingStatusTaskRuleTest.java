@@ -30,12 +30,12 @@ class CourseBuildingStatusTaskRuleTest {
         TaskDTO task = new TaskDTO();
         task.setCourseId(1L);
 
-        when(courseRepository.findById(1)).thenReturn(Optional.empty());
+        when(courseRepository.findById(1L)).thenReturn(Optional.empty());
 
         List<ValidationError> errors = rule.validate(task);
 
         assertTrue(errors.isEmpty());
-        verify(courseRepository).findById(1);
+        verify(courseRepository).findById(1L);
     }
 
     @Test
@@ -46,13 +46,13 @@ class CourseBuildingStatusTaskRuleTest {
         Course course = new Course();
         course.setStatus(Status.PUBLISHED);
 
-        when(courseRepository.findById(2)).thenReturn(Optional.of(course));
+        when(courseRepository.findById(2L)).thenReturn(Optional.of(course));
 
         List<ValidationError> errors = rule.validate(task);
 
         assertEquals(1, errors.size());
         assertEquals("COURSE_NOT_BUILDING", errors.get(0).getCode());
-        verify(courseRepository).findById(2);
+        verify(courseRepository).findById(2L);
     }
 
     @Test
@@ -63,11 +63,11 @@ class CourseBuildingStatusTaskRuleTest {
         Course course = new Course();
         course.setStatus(Status.BUILDING);
 
-        when(courseRepository.findById(3)).thenReturn(Optional.of(course));
+        when(courseRepository.findById(3L)).thenReturn(Optional.of(course));
 
         List<ValidationError> errors = rule.validate(task);
 
         assertTrue(errors.isEmpty());
-        verify(courseRepository).findById(3);
+        verify(courseRepository).findById(3L);
     }
 }

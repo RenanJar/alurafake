@@ -1,4 +1,4 @@
-package br.com.alura.AluraFake.infra.repository;
+package br.com.alura.AluraFake.integrationtest.repository;
 
 import br.com.alura.AluraFake.domain.enumeration.Role;
 import br.com.alura.AluraFake.domain.user.entity.User;

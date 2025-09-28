@@ -1,4 +1,4 @@
-package br.com.alura.AluraFake.integrationtest.domain.course;
+package br.com.alura.AluraFake.integrationtest.service.course;
 
 import br.com.alura.AluraFake.api.dto.report.InstructorCourseReportDTO;
 import br.com.alura.AluraFake.api.dto.task.TaskDTO;

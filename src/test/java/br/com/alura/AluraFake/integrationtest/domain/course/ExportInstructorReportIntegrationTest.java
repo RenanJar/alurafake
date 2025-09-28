@@ -1,7 +1,7 @@
 package br.com.alura.AluraFake.integrationtest.domain.course;
 
-import br.com.alura.AluraFake.api.dto.task.TaskDTO;
 import br.com.alura.AluraFake.api.dto.report.InstructorCourseReportDTO;
+import br.com.alura.AluraFake.api.dto.task.TaskDTO;
 import br.com.alura.AluraFake.domain.enumeration.Status;
 import br.com.alura.AluraFake.domain.enumeration.Type;
 import br.com.alura.AluraFake.integrationtest.base.IntegrationTestBase;
@@ -15,7 +15,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.testcontainers.shaded.com.google.common.collect.MoreCollectors.onlyElement;
 
 public class ExportInstructorReportIntegrationTest extends IntegrationTestBase {
 
@@ -59,7 +58,7 @@ public class ExportInstructorReportIntegrationTest extends IntegrationTestBase {
     }
 
     private void thenMustContainApublishedCourse() {
-        result = report.getContent().stream().filter(report -> report.getStatus().equals(Status.PUBLISHED)).collect(onlyElement());
+        result = report.getContent().stream().filter(report -> report.getStatus().equals(Status.PUBLISHED)).toList().getFirst();
     }
 
     private void whenExtractInstructorReport() {

@@ -71,7 +71,6 @@ class TaskRepositoryIntegrationTest extends IntegrationTestBase {
         clearAndFlushEntityManager();
 
         int updated = taskRepository.updateOrder(course.getId(), 1);
-        taskRepository.flush();
         assertThat(updated).isEqualTo(2);
 
         List<Task> tasks = taskRepository.findByCourseIdOrderByOrderAsc(course.getId());
